@@ -5,8 +5,8 @@ import Tag from '@/components/Tag/Tag.vue';
 
 const tagName = '测试标签';
 
-describe('Tag unit test', () => {
-  it('Tag is a Vue instance', () => {
+describe('Tag 单元测试', () => {
+  it('Tag 是一个Vue实例', () => {
     const wrapper = shallowMount(Tag, {
       slots: {
         default: tagName,
@@ -15,7 +15,7 @@ describe('Tag unit test', () => {
     expect(wrapper.exists()).to.be.true;
     expect(wrapper.isVueInstance()).to.be.true;
   });
-  it('test Tag default props', () => {
+  it('测试默认Props', () => {
     const wrapper = shallowMount(Tag, {
       slots: {
         default: tagName,
@@ -25,7 +25,7 @@ describe('Tag unit test', () => {
     expect(wrapper.props('type')).to.be.equal('primary');
     expect(wrapper.props('closable')).to.be.false;
   });
-  it('test Tag specified props', () => {
+  it('验证Props的正确性', () => {
     const props = {
       type: 'success',
       closable: true,
@@ -40,7 +40,7 @@ describe('Tag unit test', () => {
     expect(wrapper.props('type')).to.be.equal(props.type);
     expect(wrapper.props('closable')).to.be.equal(props.closable);
   });
-  it('test Tag close event emit', () => {
+  it('测试可关闭标签的点击事件', () => {
     const props = {
       type: 'success',
       closable: true,

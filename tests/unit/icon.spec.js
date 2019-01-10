@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 import Icon from '@/components/Icon/Icon.vue';
 
-describe('Icon unit test', () => {
-  it('Icon is a Vue constance', () => {
+describe('Icon 单元测试', () => {
+  it('Icon 是一个Vue实例', () => {
     const wrapper = shallowMount(Icon, {
       propsData: {
         iconName: 'camera',
@@ -13,7 +13,7 @@ describe('Icon unit test', () => {
     expect(wrapper.isVueInstance()).to.be.true;
   });
 
-  it('validate Icon default props without specified size and color', () => {
+  it('验证Icon 的默认Props', () => {
     const iconName = 'camera';
     const wrapper = shallowMount(Icon, {
       propsData: {
@@ -25,7 +25,7 @@ describe('Icon unit test', () => {
     expect(wrapper.props('color')).to.be.equal('#6190e8');
   });
 
-  it('validate Icon props', () => {
+  it('验证Icon 的Props正确性', () => {
     const props = {
       iconName: 'camera',
       size: '50',

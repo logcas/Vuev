@@ -2,16 +2,16 @@ import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 import Button from '@/components/Button/Button.vue';
 
-describe('Button unit test', () => {
+describe('Button 单元测试', () => {
   // 测试实例
-  it('Button is a Vue Instance', () => {
+  it('Button 是一个Vue实例', () => {
     const wrapper = shallowMount(Button);
     expect(wrapper.exists()).to.be.equal(true);
     expect(wrapper.isVueInstance()).to.be.equal(true);
   });
 
   // 测试默认的props
-  it('validate default props without deliver any params', () => {
+  it('测试默认Props', () => {
     const wrapper = shallowMount(Button);
     const { vm } = wrapper;
     expect(vm.type).to.be.equal('default');
@@ -21,7 +21,7 @@ describe('Button unit test', () => {
   });
 
   // 测试特定的props
-  it('validate specified props', () => {
+  it('测试特定Props', () => {
     const props = {
       icon: 'like',
       size: 'normal',
@@ -39,14 +39,14 @@ describe('Button unit test', () => {
   });
 
   // 测试正常点击事件
-  it('test click event emittion when click the button', () => {
+  it('测试正常的点击事件', () => {
     const wrapper = shallowMount(Button);
     wrapper.trigger('click');
     expect(wrapper.emitted().click).to.exist;
   });
 
   // 测试禁用按钮点击失效
-  it('test disabled button click event', () => {
+  it('测试禁用时点击事件失效', () => {
     const wrapper = shallowMount(Button, {
       propsData: {
         disabled: true,
@@ -57,7 +57,7 @@ describe('Button unit test', () => {
   });
 
   // 测试按钮文本
-  it('validate slot text', () => {
+  it('测试按钮文本', () => {
     const slotText = '测试按钮';
     const wrapper = shallowMount(Button, {
       slots: {
