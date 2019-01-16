@@ -1,9 +1,18 @@
 <template>
   <div :class="['l-input', status, size]">
-    <svg class="icon" aria-hidden="true" v-if="icon">
-      <use :xlink:href="'#icon-' + icon"></use>
-    </svg>
+    <l-icon class="icon" :icon-name="icon" v-if="icon"></l-icon>
+    <!--前置slot-->
+    <div :class="['l-input-append',{
+      'slot-button': appendButton,
+    }]" v-if="$slots.append" @click="clickSlotButton">
+      <slot name="append"></slot>
+    </div>
+
     <input
+      :class="{
+        'prepend': $slots.prepend,
+        'append': $slots.append,
+        }"
       :type="type"
       :placeholder="placeholder"
       :name="name"
@@ -21,10 +30,19 @@
       @blur="blur"
       @focus="focus"
     >
+
+    <!--后置slot-->
+    <div :class="['l-input-prepend',{
+      'slot-button': prependButton,
+    }]" v-if="$slots.prepend" @click="clickSlotButton">
+      <slot name="prepend"></slot>
+    </div>
   </div>
 </template>
 
 <script>
+import Icon from "../Icon/Icon.vue";
+
 export default {
   name: "l-input",
   props: {
@@ -65,18 +83,36 @@ export default {
         return ["default", "success", "error", "warning"].includes(val);
       }
     },
-    icon: String
+    icon: String,
+    appendButton: {
+      type: Boolean,
+      default: false,
+    },
+    prependButton: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     input(e) {
-      this.$emit("input", e.target.value);
+      this.$emit('input', e.target.value);
     },
     focus(e) {
-      this.$emit("focus", e);
+      this.$emit('focus', e);
     },
     blur(e) {
-      this.$emit("blur", e);
-    }
+      this.$emit('blur', e);
+    },
+    clickSlotButton(e) {
+      if(this.appendButton) {
+        this.$emit('click-append', e);
+      } else if(this.prependButton) {
+        this.$emit('click-prepend', e);
+      }
+    },
+  },
+  components: {
+    'l-icon': Icon,
   }
 };
 </script>
@@ -95,21 +131,70 @@ $warning: #ffc82c;
 .l-input {
   position: relative;
   margin: 5px 0;
-  
+  display: inline-block;
+  width: 100%;
+
   &.normal {
     input {
       padding: 7px 10px;
+    }
+
+    .l-input-prepend,
+    .l-input-append {
+      height: 32px;
+      line-height: 30px;
     }
   }
   &.small {
     input {
       padding: 5px 10px;
     }
+
+    .l-input-prepend,
+    .l-input-append {
+      height: 28px;
+      line-height: 26px;
+    }
   }
   &.large {
     input {
       padding: 10px 10px;
     }
+
+    .l-input-prepend,
+    .l-input-append {
+      height: 38px;
+      line-height: 36px;
+    }
+  }
+
+  .slot-button {
+    cursor: pointer;
+
+    &:active {
+      background: $border;
+    }
+  }
+
+  .l-input-prepend,
+  .l-input-append {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 5px;
+    background: $disbled;
+    border: 1px solid $border;
+    font-size: 12px;
+    color: $fontColor;
+  }
+
+  .l-input-prepend {
+    border-left-width: 0px;
+    border-radius: 0 5px 5px 0;
+  }
+
+  .l-input-append {
+    border-right-width: 0px;
+    border-radius: 5px 0 0 5px;
   }
 
   .icon {
@@ -119,7 +204,8 @@ $warning: #ffc82c;
     left: 5px;
     transform: translateY(-50%);
     font-size: 20px;
-    transition: opacity .2s;
+    opacity: 1;
+    z-index: 9;
 
     & + input {
       padding-left: 25px;
@@ -130,7 +216,6 @@ $warning: #ffc82c;
     outline: none;
     -webkit-appearance: none;
     display: inline-block;
-    width: 100%;
     box-sizing: border-box;
     font-size: 14px;
     color: $fontColor;
@@ -140,11 +225,10 @@ $warning: #ffc82c;
     border-color: $primary;
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
-    opacity: 0.7;
+    opacity: 0.5;
 
     &:focus {
       border-color: $primary;
-      box-shadow: 0 0 1px 0 $primary;
       opacity: 1;
     }
 
@@ -153,6 +237,14 @@ $warning: #ffc82c;
       border-color: $border;
       background-color: $disbled;
       opacity: 0.5;
+    }
+
+    &.append {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &.prepend {
+      border-radius: 5px 0 0 5px;
     }
   }
 

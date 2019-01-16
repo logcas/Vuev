@@ -1,11 +1,25 @@
 <template>
   <div id="app">
-    <l-input v-model="val" type="text" size="normal" icon="like"></l-input>
-    <l-input v-model="val" type="text" size="small" icon="camera"></l-input>
-    <l-input v-model="val" type="text" size="large"></l-input>
-    <l-input v-model="val" type="text" status="warning"></l-input>
+    <l-input v-model="val" type="text" size="normal" prepend-button>
+      <template slot="prepend">
+        <span>搜索</span>
+      </template>
+    </l-input>
+    <l-input v-model="val" type="text" size="large" append-button>
+      <template slot="append">
+        <span>搜索</span>
+      </template>
+    </l-input>
+    <l-input v-model="val" type="text" size="small">
+      <template slot="append">
+        <span>http://</span>
+      </template>
+    </l-input>
+    <l-input v-model="val" type="text" icon="like"></l-input>
+    <l-input v-model="val" type="text" size="large" icon="like"></l-input>
+    <l-input v-model="val" type="text" status="warning" icon="like"></l-input>
     {{val}}
-    <my-icon icon-name="like" size="15"></my-icon>
+    <my-icon icon-name="like" size="15" color="#000"></my-icon>
   </div>
 </template>
 
@@ -15,13 +29,13 @@ import Icon from "./components/Icon/Icon.vue";
 import Tag from "./components/Tag/Tag.vue";
 import Checkbox from "./components/Checkbox/Checkbox.vue";
 import CheckboxGroup from "./components/Checkbox/CheckboxGroup.vue";
-import Input from './components/Input/Input.vue';
+import Input from "./components/Input/Input.vue";
 
 export default {
   name: "app",
   data() {
     return {
-      val: '1234567',
+      val: "1234567"
     };
   },
   components: {
@@ -30,7 +44,7 @@ export default {
     "l-tag": Tag,
     "l-checkbox": Checkbox,
     "l-checkbox-group": CheckboxGroup,
-    'l-input': Input,
+    "l-input": Input
   },
   methods: {
     btnClick() {
