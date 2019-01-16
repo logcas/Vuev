@@ -9,10 +9,13 @@
       <template slot="append">
         <span>搜索</span>
       </template>
+      <template slot="prepend">
+        <span>hello</span>
+      </template>
     </l-input>
     <l-input v-model="val" type="text" size="small">
-      <template slot="append">
-        <span>http://</span>
+      <template slot="prepend">
+        <span>.com</span>
       </template>
     </l-input>
     <l-input v-model="val" type="text" icon="like"></l-input>

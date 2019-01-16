@@ -128,43 +128,58 @@ $success: #13ce66;
 $error: #ff4949;
 $warning: #ffc82c;
 
+$margin: 5px;
+$radius: 5px;
+$padding: 5px;
+$smallVerticalPadding: 5px;
+$normalVerticalPadding: 7px;
+$largeVerticalPadding: 10px;
+$horizonalPadding: 10px;
+
+$blurOpacity: 0.7;
+$focusOpacity: 1;
+
+$smallHeight: 26px;
+$normalHeight: 30px;
+$largeHeight: 36px;
+
 .l-input {
   position: relative;
-  margin: 5px 0;
+  margin: $margin 0;
   display: inline-block;
   width: 100%;
 
   &.normal {
     input {
-      padding: 7px 10px;
+      padding: $normalVerticalPadding $horizonalPadding;
     }
 
     .l-input-prepend,
     .l-input-append {
-      height: 32px;
-      line-height: 30px;
+      height: $normalHeight;
+      line-height: $normalHeight;
     }
   }
   &.small {
     input {
-      padding: 5px 10px;
+      padding: $smallVerticalPadding $horizonalPadding;
     }
 
     .l-input-prepend,
     .l-input-append {
-      height: 28px;
-      line-height: 26px;
+      height: $smallHeight;
+      line-height: $smallHeight;
     }
   }
   &.large {
     input {
-      padding: 10px 10px;
+      padding: $largeVerticalPadding $horizonalPadding;
     }
 
     .l-input-prepend,
     .l-input-append {
-      height: 38px;
-      line-height: 36px;
+      height: $largeHeight;
+      line-height: $largeHeight;
     }
   }
 
@@ -179,8 +194,7 @@ $warning: #ffc82c;
   .l-input-prepend,
   .l-input-append {
     display: inline-block;
-    box-sizing: border-box;
-    padding: 0 5px;
+    padding: 0 $horizonalPadding;
     background: $disbled;
     border: 1px solid $border;
     font-size: 12px;
@@ -189,12 +203,12 @@ $warning: #ffc82c;
 
   .l-input-prepend {
     border-left-width: 0px;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 $radius $radius 0;
   }
 
   .l-input-append {
     border-right-width: 0px;
-    border-radius: 5px 0 0 5px;
+    border-radius: $radius 0 0 $radius;
   }
 
   .icon {
@@ -219,61 +233,63 @@ $warning: #ffc82c;
     box-sizing: border-box;
     font-size: 14px;
     color: $fontColor;
-    padding: 5px 10px;
+    padding: $normalVerticalPadding $horizonalPadding;
     border-width: 1px;
     border-style: solid;
     border-color: $primary;
-    border-radius: 5px;
+    border-radius: $radius;
     transition: all 0.2s ease-in-out;
-    opacity: 0.5;
+    opacity: $blurOpacity;
 
     &:focus {
       border-color: $primary;
-      opacity: 1;
+      opacity: $focusOpacity;
     }
 
     &:disabled,
     &:read-only {
       border-color: $border;
       background-color: $disbled;
-      opacity: 0.5;
+      opacity: $blurOpacity;
     }
 
     &.append {
-      border-radius: 0 5px 5px 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
     &.prepend {
-      border-radius: 5px 0 0 5px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
   &.success input {
     border-color: $success;
-    opacity: 0.7;
+    opacity: $blurOpacity;
   }
 
   &.error input {
     border-color: $error;
-    opacity: 0.7;
+    opacity: $blurOpacity;
   }
 
   &.warning input {
     border-color: $warning;
-    opacity: 0.7;
+    opacity: $blurOpacity;
   }
 
   &.success input:focus,
   &.error input:focus,
   &.warning input:focus {
-    opacity: 1;
+    opacity: $focusOpacity;
   }
 }
 
 .icon {
   width: 1em;
   height: 1em;
-  vertical-align: -0.15em;
+  horizonal-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
