@@ -5,6 +5,7 @@ import CheckBox from './Checkbox';
 import CheckboxGroup from './Checkbox-Group';
 import Icon from './Icon';
 import Tag from './Tag';
+import Input from './Input';
 
 const components = {
   Button,
@@ -12,6 +13,7 @@ const components = {
   CheckboxGroup,
   Icon,
   Tag,
+  Input,
 };
 
 const install = function install(Vue) {
