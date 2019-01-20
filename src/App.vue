@@ -31,6 +31,18 @@
       <l-button type="default" icon="like">带图标的</l-button>
       <l-button type="primary" icon="like">带图标的</l-button>
     </div>
+    <div>
+      <l-radio-group v-model="val">
+        <l-radio-button label="hello" disabled>hello</l-radio-button>
+        <l-radio-button label="hello2">hello2</l-radio-button>
+        <l-radio-button label="hello3">hello3</l-radio-button>
+      </l-radio-group>
+      <p>{{val}}</p>
+    </div>
+    <input type="radio" value="1" v-model="val2">11
+    <input type="radio" value="2" v-model="val2">22
+    <input type="radio" value="3" v-model="val2">33
+    <p>{{val2}}</p>
   </div>
 </template>
 
@@ -41,12 +53,16 @@ import Tag from "./components/Tag/Tag.vue";
 import Checkbox from "./components/Checkbox/Checkbox.vue";
 import CheckboxGroup from "./components/Checkbox/CheckboxGroup.vue";
 import Input from "./components/Input/Input.vue";
+import Radio from "./components/Radio/Radio.vue";
+import RadioGroup from "./components/Radio/RadioGroup.vue";
+import RadioButton from './components/Radio/RadioButton.vue';
 
 export default {
   name: "app",
   data() {
     return {
-      val: "1234567"
+      val: "hello3",
+      val2: "hello"
     };
   },
   components: {
@@ -55,7 +71,10 @@ export default {
     "l-tag": Tag,
     "l-checkbox": Checkbox,
     "l-checkbox-group": CheckboxGroup,
-    "l-input": Input
+    "l-input": Input,
+    "l-radio": Radio,
+    "l-radio-group": RadioGroup,
+    'l-radio-button': RadioButton,
   },
   methods: {
     btnClick() {
