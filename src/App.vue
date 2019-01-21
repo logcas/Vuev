@@ -49,6 +49,10 @@
       <p>Rate Allow half：{{rate2}}</p>
       <l-rate :allow-half="true" v-model="rate2" icon-name="likefill">></l-rate>
     </div>
+    <div>
+      <h1>Checkbox</h1>
+      <l-checkbox v-model="checkval"></l-checkbox>
+    </div>
   </div>
 </template>
 
@@ -72,6 +76,7 @@ export default {
       val2: "hello",
       rate: 3,
       rate2: 0,
+      checkval: false,
     };
   },
   components: {
