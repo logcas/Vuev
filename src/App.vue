@@ -43,6 +43,12 @@
     <input type="radio" value="2" v-model="val2">22
     <input type="radio" value="3" v-model="val2">33
     <p>{{val2}}</p>
+    <div>
+      <p>Rate：{{rate}}</p>
+      <l-rate :value="rate" icon-name="likefill" :disabled="true"></l-rate>
+      <p>Rate Allow half：{{rate2}}</p>
+      <l-rate :allow-half="true" v-model="rate2" icon-name="likefill">></l-rate>
+    </div>
   </div>
 </template>
 
@@ -56,13 +62,16 @@ import Input from "./components/Input/Input.vue";
 import Radio from "./components/Radio/Radio.vue";
 import RadioGroup from "./components/Radio/RadioGroup.vue";
 import RadioButton from './components/Radio/RadioButton.vue';
+import Rate from './components/Rate/Rate.vue';
 
 export default {
   name: "app",
   data() {
     return {
       val: "hello3",
-      val2: "hello"
+      val2: "hello",
+      rate: 3,
+      rate2: 0,
     };
   },
   components: {
@@ -75,6 +84,7 @@ export default {
     "l-radio": Radio,
     "l-radio-group": RadioGroup,
     'l-radio-button': RadioButton,
+    'l-rate': Rate,
   },
   methods: {
     btnClick() {
@@ -85,6 +95,9 @@ export default {
     },
     onchange(data) {
       console.log(data);
+    },
+    show(newVal,oldVal) {
+      alert(`新的评分为：${newVal}，旧的评分为：${oldVal}`);
     }
   }
 };
