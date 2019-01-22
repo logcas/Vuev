@@ -7,11 +7,27 @@
 其中，`type`属性为原生属性，你可以指定它为`text`、`password`等类型。
 
 <ClientOnly>
-<l-input type="text" placeholder="hello,vuev"></l-input>
+<l-input v-model="val" type="text"></l-input>
 </ClientOnly>
 
+{{val}}
+
 ```html
-<l-input type="text" placeholder="hello,vuev"></l-input>
+<l-input v-model="val" type="text"></l-input>
+<script>
+export default {
+    data() {
+        return {
+            val:'hello,vuev',
+        }
+    },
+    methods: {
+        show(val) {
+            alert(val);
+        }
+    },
+}
+</script>
 ```
 
 ### 带图标的输入框
@@ -61,13 +77,13 @@
 当然了，传入一个`<l-icon>`是肯定可以的。
 
 <ClientOnly>
-<l-input type="text" size="normal" prepend-button>
+<l-input type="text" size="normal" v-model="val" :prepend-button="true" @click-prepend="show">
 <template slot="prepend">
 <span>搜索</span>
 </template>
 </l-input>
 
-<l-input type="text" size="large" append-button>
+<l-input type="text" size="large" :append-button="true" @click-append="show">
 <template slot="append">
 <span>搜索</span>
 </template>
@@ -90,21 +106,20 @@
 </ClientOnly>
 
 ```html
-<l-input  type="text" size="normal" prepend-button>
-    <template slot="prepend">
-        <span>搜索</span>
-    </template>
+<l-input type="text" size="normal" v-model="val" :prepend-button="true" @click-prepend="show">
+<template slot="prepend">
+<span>搜索</span>
+</template>
 </l-input>
 
-<l-input  type="text" size="large" append-button>
-    <template slot="append">
-        <span>搜索</span>
-    </template>
-    <template slot="prepend">
-        <l-icon icon-name="camera"></l-icon>
-    </template>
+<l-input type="text" size="large" :append-button="true" @click-append="show">
+<template slot="append">
+<span>搜索</span>
+</template>
+<template slot="prepend">
+<l-icon icon-name="camera"></l-icon>
+</template>
 </l-input>
-
 <l-input  type="text" size="small">
     <template slot="prepend">
         <span>.com</span>
@@ -134,6 +149,21 @@
 <l-input type="text" status="error" placeholder="error状态的"></l-input>
 <l-input type="text" status="warning" placeholder="warning状态的"></l-input>
 ```
+
+<script>
+export default {
+    data() {
+        return {
+            val:'hello,vuev',
+        }
+    },
+    methods: {
+        show(val) {
+            alert(val);
+        }
+    }
+}
+</script>
 
 ### Props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
