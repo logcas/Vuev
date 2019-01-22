@@ -10,7 +10,8 @@ export default {
   data() {
     return {
       values: [],
-      childrens:[]
+      childrens:[],
+      firstLoad: true,
     }
   },
   methods: {
@@ -22,7 +23,7 @@ export default {
         }
       });
       this.$emit('input', this.values);
-      this.$emit('on-change', this.values);
+      if(!this.firstLoad) this.$emit('on-change', this.values);
     },
     findChildren() {
       if(this.$children) {
@@ -37,6 +38,7 @@ export default {
   mounted() {
     this.findChildren();
     this.updateValues();
+    this.firstLoad = false;
   },
 }
 </script>
