@@ -1,44 +1,5 @@
 <template>
   <div id="app">
-    <div id="inputs">
-      <h1>Inputs</h1>
-      <l-input v-model="val" type="text" size="normal" prepend-button>
-        <template slot="prepend">
-          <span>搜索</span>
-        </template>
-      </l-input>
-      <l-input v-model="val" type="text" size="large" append-button>
-        <template slot="append">
-          <span>搜索</span>
-        </template>
-        <template slot="prepend">
-          <span>hello</span>
-        </template>
-      </l-input>
-      <l-input v-model="val" type="text" size="small">
-        <template slot="prepend">
-          <span>.com</span>
-        </template>
-      </l-input>
-      <l-input v-model="val" type="text" icon="like"></l-input>
-      <l-input v-model="val" type="text" size="large" icon="like"></l-input>
-      <l-input v-model="val" type="text" status="warning" icon="like"></l-input>
-    </div>
-    <div id="buttons">
-      <l-button type="primary">主要按钮</l-button>
-      <l-button type="default">默认按钮</l-button>
-      <l-button type="error">错误按钮</l-button>
-      <l-button type="default" icon="like">带图标的</l-button>
-      <l-button type="primary" icon="like">带图标的</l-button>
-    </div>
-    <div>
-      <l-radio-group v-model="val">
-        <l-radio-button label="hello" disabled>hello</l-radio-button>
-        <l-radio-button label="hello2">hello2</l-radio-button>
-        <l-radio-button label="hello3">hello3</l-radio-button>
-      </l-radio-group>
-      <p>{{val}}</p>
-    </div>
     <input type="radio" value="1" v-model="val2">11
     <input type="radio" value="2" v-model="val2">22
     <input type="radio" value="3" v-model="val2">33
@@ -52,6 +13,12 @@
     <div>
       <h1>Checkbox</h1>
       <l-checkbox v-model="checkval"></l-checkbox>
+    </div>
+    <div>
+      <h1>Switch</h1>
+      <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关"></l-switch>
+      <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关" size="large"></l-switch>
+      {{ switchVal }}
     </div>
   </div>
 </template>
@@ -67,6 +34,7 @@ import Radio from "./components/Radio/Radio.vue";
 import RadioGroup from "./components/Radio/RadioGroup.vue";
 import RadioButton from './components/Radio/RadioButton.vue';
 import Rate from './components/Rate/Rate.vue';
+import Switch from './components/Switch/Switch.vue';
 
 export default {
   name: "app",
@@ -77,6 +45,7 @@ export default {
       rate: 3,
       rate2: 0,
       checkval: false,
+      switchVal: true,
     };
   },
   components: {
@@ -90,6 +59,7 @@ export default {
     "l-radio-group": RadioGroup,
     'l-radio-button': RadioButton,
     'l-rate': Rate,
+    'l-switch': Switch,
   },
   methods: {
     btnClick() {
