@@ -1,7 +1,7 @@
 # VueV
-A simple components library supported Vuejs2.0.
+VueV是一个支持Vue2.x的简洁UI组件库，目前正在建设中。
 
-Since VueV is a library written depending on my mood and it is a practice, it could not be used in production environment.
+就目前来讲，Bug满天飞。
 
 ## Installation
 ```
@@ -25,7 +25,7 @@ Vue.use(Vuev);
 IE10+
 
 ## Documentation
-😁The documentation is underconstructing.
+😁文档正在写
 
 [Click me](https://github.com/logcas/Vuev/blob/master/docs/README.md)
 

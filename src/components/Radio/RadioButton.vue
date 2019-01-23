@@ -9,7 +9,7 @@
       'disabled': disabled,
     }
   ]"
-  @click.capture="select"
+    @click.capture="select"
   >
     <slot></slot>
   </div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'l-radio-button',
+  name: "l-radio-button",
   props: {
     label: String,
     disabled: {
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     select() {
-      if(this.disabled) return;
+      if (this.disabled) return;
       this.parent && this.parent.updateValue(this.currentValue);
     },
     findParent() {
@@ -58,7 +58,7 @@ export default {
     }
   },
   mounted() {
-    this.findParent()
+    this.findParent();
   }
 };
 </script>
@@ -82,6 +82,7 @@ $horizonalPadding: 10px;
 
 .l-radio-button {
   display: inline-block;
+  margin: 0;
   padding: $padding;
   font-size: 14px;
   color: $basicColor;
@@ -94,7 +95,10 @@ $horizonalPadding: 10px;
   &.disabled {
     background: $disabled;
     color: $primary;
-    cursor: not-allowed;
+
+    &.disabled:hover {
+      cursor: not-allowed;
+    }
 
     &.checked {
       background: $disabled;
@@ -126,6 +130,6 @@ $horizonalPadding: 10px;
 
   &.large {
     padding: $largeVerticalPadding $horizonalPadding;
-  }  
+  }
 }
 </style>

@@ -112,7 +112,9 @@ $disbled: #eef0f0;
     &:disabled {
       border-color: $disbled;
       background-color: $default;
-      cursor: not-allowed;
+      &:hover {
+        cursor: not-allowed;
+      }
     }
 
     &:disabled:checked::after {

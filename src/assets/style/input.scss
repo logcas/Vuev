@@ -133,7 +133,7 @@ $largeHeight: 36px;
       opacity: $blurOpacity;
     }
 
-    &:disabled {
+    &:disabled:hover {
       cursor: not-allowed;
     }
 

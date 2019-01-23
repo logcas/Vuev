@@ -95,7 +95,8 @@ module.exports = {
                         collapsable: false,
                         children: [
                             '/zh/basic/icon',
-                            '/zh/basic/button'
+                            '/zh/basic/button',
+                            '/zh/basic/tag',
                         ]
                     },
                     {
@@ -104,6 +105,7 @@ module.exports = {
                         children: [
                             '/zh/form/checkbox',
                             '/zh/form/input',
+                            '/zh/form/radio',
                         ]
                     }
                 ],

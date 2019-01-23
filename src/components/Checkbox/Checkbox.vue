@@ -11,39 +11,39 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false,
+      default: false
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     checked: {
       type: Boolean,
-      default: false,
+      default: false
     },
     label: {
       type: String,
-      default: '',
-    },
+      default: ""
+    }
   },
   data() {
     return {
       parent: null,
       currentValue: false,
-      isGroup: false,
+      isGroup: false
     };
   },
   watch: {
     value() {
       this.currentValue = this.value;
-    },
+    }
   },
   methods: {
     change(e) {
       let checked = e.target.checked;
       this.currentValue = checked;
       this.$emit("input", this.currentValue);
-      !this.isGroup && this.$emit('on-change', this.label);
+      !this.isGroup && this.$emit("on-change", this.label);
       this.parent && this.parent.updateValues();
     },
     findParent() {
@@ -57,10 +57,10 @@ export default {
     this.findParent();
     if (this.checked) {
       this.currentValue = this.checked;
-      this.$emit('input', this.currentValue);
+      this.$emit("input", this.currentValue);
     } else if (this.value) {
       this.currentValue = this.value;
-      this.$emit('input', this.currentValue);
+      this.$emit("input", this.currentValue);
     }
   }
 };
@@ -80,7 +80,10 @@ $fontColor: #3f536e;
 
   &.disabled {
     opacity: 0.5;
-    cursor: not-allowed;
+
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 
   input[type="checkbox"] {

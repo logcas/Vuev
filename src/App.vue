@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <l-radio-group v-model="vals">
+  <l-radio-button label="广州" :disabled="true">广州</l-radio-button>
+  <l-radio-button label="北京">北京</l-radio-button>
+  <l-radio-button label="深圳">深圳</l-radio-button>
+  <l-radio-button label="成都">成都</l-radio-button>
+</l-radio-group>
     <input type="radio" value="1" v-model="val2">11
     <input type="radio" value="2" v-model="val2">22
     <input type="radio" value="3" v-model="val2">33
@@ -16,7 +22,7 @@
     </div>
     <div>
       <h1>Switch</h1>
-      <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关"></l-switch>
+      <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关" :disabled="true"></l-switch>
       <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关" size="large"></l-switch>
       {{ switchVal }}
     </div>
@@ -46,6 +52,7 @@ export default {
       rate2: 0,
       checkval: false,
       switchVal: true,
+      vals:'',
     };
   },
   components: {
