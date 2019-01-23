@@ -80,6 +80,7 @@ $fontColor: #3f536e;
 
   &.disabled {
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
   input[type="checkbox"] {

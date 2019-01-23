@@ -10,7 +10,6 @@ npm install @everlastlucas/vuev
 or
 ```
 cnpm install @everlastlucas/vuev
-// Faster when you are in China.
 ```
 
 ## Usage
@@ -23,10 +22,12 @@ Vue.use(Vuev);
 ```
 
 ## Browser Support
-Unknown.The development environment is Chorme.
+IE10+
 
 ## Documentation
-I would finish it when I have time.
+😁The documentation is underconstructing.
+
+[Click me](https://github.com/logcas/Vuev/blob/master/docs/README.md)
 
 ## License
 [MIT](https://github.com/logcas/Vuev/blob/master/LICENSE)

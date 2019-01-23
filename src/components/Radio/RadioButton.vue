@@ -94,7 +94,7 @@ $horizonalPadding: 10px;
   &.disabled {
     background: $disabled;
     color: $primary;
-    cursor: default;
+    cursor: not-allowed;
 
     &.checked {
       background: $disabled;

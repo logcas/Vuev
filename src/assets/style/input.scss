@@ -133,6 +133,10 @@ $largeHeight: 36px;
       opacity: $blurOpacity;
     }
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     &.append {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;

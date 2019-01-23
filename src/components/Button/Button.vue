@@ -61,6 +61,10 @@ $defaultSecondColor: #eef0f0;
 $btnGroupBorderColor: #c5d9e8;
 $btnGroupTextColor: #8dabc4;
 
+.btn:disabled {
+  cursor: not-allowed;
+}
+
 .btn-group {
   margin: 5px;
   .btn {
