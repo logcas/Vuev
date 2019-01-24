@@ -106,6 +106,8 @@ module.exports = {
                             '/zh/form/checkbox',
                             '/zh/form/input',
                             '/zh/form/radio',
+                            '/zh/form/rate',
+                            '/zh/form/select',
                         ]
                     }
                 ],
