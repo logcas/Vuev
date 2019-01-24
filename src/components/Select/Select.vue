@@ -5,7 +5,18 @@
       :class="['l-select-input',{'selected':isSelect}]"
       @click="select"
       v-clickoutside="unselect"
-    >{{currentLabel}}</div>
+    >
+      <span v-show="!multiple || selections.length === 0">{{currentLabel}}</span>
+      <div v-if="multiple" class="multiple-list">
+        <l-select-tag
+          v-for="(item,key) in selections"
+          :key="key"
+          :index="key"
+          :label="item.label"
+          @remove-selection="removeTag"
+        ></l-select-tag>
+      </div>
+    </div>
     <!--selections 选择列表-->
     <ul :class="['l-select-list',{'displayed': isSelect }]">
       <slot></slot>
@@ -15,29 +26,34 @@
 
 <script>
 import clickOutSide from "../../directives/clickoutside";
+import SelectTag from "./SelectTag.vue";
 
 export default {
   name: "l-select",
   directives: {
     clickoutside: clickOutSide
   },
+  components: {
+    "l-select-tag": SelectTag
+  },
   props: {
-    value: String,
+    value: [String, Array],
     placeholder: {
       type: String,
-      default: '请选择',
+      default: "请选择"
     },
     multiple: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       isSelect: false,
-      currentValue: '',
-      currentLabel: 'VuevSelect',
+      currentValue: "",
+      currentLabel: "VuevSelect",
       childrens: [],
+      selections: []
     };
   },
   methods: {
@@ -48,15 +64,24 @@ export default {
       this.isSelect = false;
     },
     setValue(label, val) {
-      this.$emit('input', val);
-      this.currentValue = val;
-      this.currentLabel = label;
+      if (!this.multiple) {
+        this.$emit("input", val);
+        this.currentValue = val;
+        this.currentLabel = label;
+      } else {
+        this.removeSelection(val) ||
+          this.selections.push({
+            label,
+            value: val
+          });
+        this.$emit("input", this.selections.map(select => select.value));
+      }
     },
     searchChild(node, arr) {
       let child = node.$children;
-      if(child) {
+      if (child) {
         child.forEach(el => {
-          if(el.$options.name === 'l-select-option') {
+          if (el.$options.name === "l-select-option") {
             arr.push(el);
           }
           this.searchChild(el, arr);
@@ -65,25 +90,51 @@ export default {
     },
     initChidren() {
       this.searchChild(this, this.childrens);
-      if(this.value) {
+      if (this.value) {
         this.childrens.forEach(child => {
-          if(this.value === child.currentValue) {
+          if (this.value === child.currentValue || this.value.includes(child.currentValue)) {
             child.setValue();
           }
         });
       }
     },
     clearSelections() {
-      if(!this.childrens || this.multiple) return;
+      if (!this.childrens || this.multiple) return;
       this.childrens.forEach(child => {
         child.selected = false;
       });
+    },
+    removeSelection(val) {
+      let idx = -1;
+      if (typeof val === "string") {
+        for (let i = 0, len = this.selections.length; i < len; ++i) {
+          if (this.selections[i].value === val) {
+            idx = i;
+            break;
+          }
+        }
+      } else if (typeof val === "number") {
+        idx = val;
+      }
+      if (idx !== -1) {
+        let [{ value: selectVal }] = this.selections.splice(idx, 1);
+        this.childrens.forEach(child => {
+          if (child.currentValue === selectVal) {
+            child.selected = false;
+          }
+        });
+        return true;
+      }
+      return false;
+    },
+    removeTag(idx) {
+      this.setValue(null, idx);
     },
   },
   mounted() {
     this.currentLabel = this.placeholder;
     this.initChidren();
-  },
+  }
 };
 </script>
 

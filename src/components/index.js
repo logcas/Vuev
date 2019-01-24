@@ -11,6 +11,9 @@ import RadioGroup from './Radio-Group';
 import RadioButton from './Radio-Button';
 import Rate from './Rate';
 import Switch from './Switch';
+import Select from './Select';
+import SelectGroup from './Select-Group';
+import SelectOption from './Select-Option';
 
 const components = {
   Button,
@@ -24,6 +27,9 @@ const components = {
   RadioButton,
   Rate,
   Switch,
+  Select,
+  SelectGroup,
+  SelectOption,
 };
 
 const install = function install(Vue) {

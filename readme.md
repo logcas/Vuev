@@ -1,8 +1,6 @@
 # VueV
 VueV是一个支持Vue2.x的简洁UI组件库，目前正在建设中。
 
-就目前来讲，Bug满天飞。
-
 ## Installation
 ```
 npm install @everlastlucas/vuev

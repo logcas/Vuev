@@ -1,5 +1,5 @@
 <template>
-  <li :class="['l-select-option', {'disabled': disabled, 'selected': selected}]" @click="setValue">
+  <li :class="['l-select-option', {'disabled': disabled, 'selected': selected}]" @click.stop="setValue">
     <slot></slot>
   </li>
 </template>
@@ -38,8 +38,13 @@ export default {
     setValue() {
       if(this.disabled) return;
       this.parent && this.parent.setValue(this.currentLabel, this.currentValue);
-      this.parent && this.parent.clearSelections();
-      this.selected = true;
+      if(this.parent && this.parent.multiple) {
+        this.selected = !this.selected;
+      } else {
+        this.parent.isSelect = false;
+        this.parent.clearSelections();
+        this.selected = true;
+      }
     },
   },
   mounted() {

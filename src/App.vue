@@ -26,7 +26,7 @@
       <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关" size="large"></l-switch>
       {{ switchVal }}
     </div>
-    <l-select v-model="select" style="width:150px;">
+    <l-select v-model="select" style="width:300px;">
       <l-select-group label="广州">
         <l-select-option>广州市番禺区</l-select-option>
         <l-select-option>广州市天河区</l-select-option>
@@ -39,20 +39,19 @@
         <l-select-option>清远市洲心镇</l-select-option>
         <l-select-option>清远市XXX</l-select-option>
       </l-select-group>
-      <l-select-group label="清远">
-        <l-select-option>清远市清城区</l-select-option>
-        <l-select-option>清远市清新区</l-select-option>
-        <l-select-option>清远市洲心镇</l-select-option>
-        <l-select-option>清远市XXX</l-select-option>
+      <l-select-group label="深圳">
+        <l-select-option>深圳市南山区</l-select-option>
+        <l-select-option>深圳市罗湖区</l-select-option>
+        <l-select-option>深圳市龙岗区</l-select-option>
       </l-select-group>
-      <l-select-group label="清远">
-        <l-select-option>清远市清城区</l-select-option>
-        <l-select-option>清远市清新区</l-select-option>
-        <l-select-option>清远市洲心镇</l-select-option>
-        <l-select-option>清远市XXX</l-select-option>
+      <l-select-group label="北京">
+        <l-select-option>北京市XX区</l-select-option>
       </l-select-group>
     </l-select>
     {{select}}
+    <div>
+      <l-select-tag label="hello"></l-select-tag>
+    </div>
   </div>
 </template>
 
@@ -71,6 +70,7 @@ import Switch from "./components/Switch/Switch.vue";
 import Select from "./components/Select/Select.vue";
 import SelectOption from "./components/Select/SelectOption.vue";
 import SelectGroup from "./components/Select/SelectGroup.vue";
+import SelectTag from './components/Select/SelectTag.vue';
 
 export default {
   name: "app",
@@ -83,7 +83,7 @@ export default {
       checkval: false,
       switchVal: true,
       vals: "",
-      select: "广州市荔湾区",
+      select: '',
     };
   },
   components: {
@@ -100,7 +100,8 @@ export default {
     "l-switch": Switch,
     "l-select": Select,
     "l-select-option": SelectOption,
-    "l-select-group": SelectGroup
+    "l-select-group": SelectGroup,
+    "l-select-tag": SelectTag,
   },
   methods: {
     btnClick() {
