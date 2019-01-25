@@ -14,6 +14,7 @@ import Switch from './Switch';
 import Select from './Select';
 import SelectGroup from './Select-Group';
 import SelectOption from './Select-Option';
+import Slider from './Slider';
 
 const components = {
   Button,
@@ -30,6 +31,7 @@ const components = {
   Select,
   SelectGroup,
   SelectOption,
+  Slider,
 };
 
 const install = function install(Vue) {

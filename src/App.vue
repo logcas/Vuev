@@ -50,7 +50,13 @@
     </l-select>
     {{select}}
     <div>
-      <l-select-tag label="hello"></l-select-tag>
+      <input v-model="len1" type="number">
+      <l-slider v-model="len1" :max="90" :min="-10" disabled></l-slider>
+      {{len1}}
+      <l-slider v-model="len2" :step="5" :max="230" :min="20"></l-slider>
+      {{len2}}
+      <l-slider v-model="len3" :step="5" :max="100" :min="0"></l-slider>
+      {{len3}}
     </div>
   </div>
 </template>
@@ -71,6 +77,7 @@ import Select from "./components/Select/Select.vue";
 import SelectOption from "./components/Select/SelectOption.vue";
 import SelectGroup from "./components/Select/SelectGroup.vue";
 import SelectTag from './components/Select/SelectTag.vue';
+import Slider from './components/Slider/Slider.vue';
 
 export default {
   name: "app",
@@ -84,6 +91,9 @@ export default {
       switchVal: true,
       vals: "",
       select: '',
+      len1: 20,
+      len2: 10,
+      len3: 0,
     };
   },
   components: {
@@ -102,6 +112,7 @@ export default {
     "l-select-option": SelectOption,
     "l-select-group": SelectGroup,
     "l-select-tag": SelectTag,
+    'l-slider': Slider,
   },
   methods: {
     btnClick() {
