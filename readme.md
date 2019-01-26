@@ -1,5 +1,42 @@
 # VueV
-VueV是一个支持Vue2.x的简洁UI组件库，目前正在建设中。
+VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正在建设中。
+
+## Progress
+- [x] Basic 基础
+  - [x] Icon 图标
+  - [x] Tag 标签
+  - [x] Button 按钮
+- [ ] Form 表单组件
+  - [x] Input 文本输入框
+  - [x] Checkbox 选择器
+  - [x] Radio 单选框
+  - [x] Rate 评分
+  - [x] Select 下拉选择列表
+  - [x] Slider 滑动输入条
+  - [x] Switch 开关
+  - [x] Textarea 多行文本输入框
+  - [ ] InputNumber 数字输入框
+- [ ] 视图
+  - [ ] Alert 警告提示框
+  - [ ] Badge 微标
+  - [ ] Card 卡片
+  - [ ] Collapse 折叠面板
+  - [ ] LoadingBar 加载进度条
+  - [ ] Modal 模态框
+  - [ ] Message 全局提示
+  - [ ] Notification 通知提醒
+  - [ ] Popover 弹出框
+  - [ ] Progress 进度条
+  - [ ] Timeline 时间轴
+  - [ ] Tooptip 文字提示
+  - [ ] Table 表格
+- [ ] 导航
+  - [ ] Breadcrumb 面包屑
+  - [ ] Dropdown 下拉菜单
+  - [ ] Menu 导航菜单
+  - [ ] Pagination 分页
+  - [ ] Steps 步骤条
+  - [ ] Tabs 标签页
 
 ## Installation
 ```
