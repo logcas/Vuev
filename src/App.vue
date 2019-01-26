@@ -19,6 +19,8 @@
     <div>
       <h1>Checkbox</h1>
       <l-checkbox v-model="checkval"></l-checkbox>
+      <l-textarea min-row="3" max-row="5" placeholder="hello,vuev" v-model="val"></l-textarea>
+      {{val}}
     </div>
     <div>
       <h1>Switch</h1>
@@ -78,6 +80,7 @@ import SelectOption from "./components/Select/SelectOption.vue";
 import SelectGroup from "./components/Select/SelectGroup.vue";
 import SelectTag from './components/Select/SelectTag.vue';
 import Slider from './components/Slider/Slider.vue';
+import Textarea from './components/Textarea/Textarea.vue';
 
 export default {
   name: "app",
@@ -113,6 +116,7 @@ export default {
     "l-select-group": SelectGroup,
     "l-select-tag": SelectTag,
     'l-slider': Slider,
+    'l-textarea': Textarea,
   },
   methods: {
     btnClick() {

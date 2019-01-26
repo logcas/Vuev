@@ -15,6 +15,7 @@ import Select from './Select';
 import SelectGroup from './Select-Group';
 import SelectOption from './Select-Option';
 import Slider from './Slider';
+import Textarea from './Textarea';
 
 const components = {
   Button,
@@ -32,16 +33,34 @@ const components = {
   SelectGroup,
   SelectOption,
   Slider,
+  Textarea,
 };
 
 const install = function install(Vue) {
   Object.keys(components).forEach(key => Vue.component(components[key].name, components[key]));
 };
 
+// for cdn
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
 export default {
   install,
+  Button,
+  CheckBox,
+  CheckboxGroup,
+  Icon,
+  Tag,
+  Input,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Rate,
+  Switch,
+  Select,
+  SelectGroup,
+  SelectOption,
+  Slider,
+  Textarea,
 };
