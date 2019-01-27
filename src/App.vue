@@ -28,7 +28,7 @@
       <l-switch v-model="switchVal" checkedText="开啊开" uncheckedText="关啊关" size="large"></l-switch>
       {{ switchVal }}
     </div>
-    <l-select v-model="select" style="width:300px;">
+    <l-select v-model="select" style="width:300px;" multiple>
       <l-select-group label="广州">
         <l-select-option>广州市番禺区</l-select-option>
         <l-select-option>广州市天河区</l-select-option>

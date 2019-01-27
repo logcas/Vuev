@@ -29,12 +29,13 @@ export default {
     setValue() {
       if(this.disabled) return;
       this.parent && this.parent.setValue(this.currentLabel, this.currentValue);
-      if(this.parent && this.parent.multiple) {
-        this.selected = !this.selected;
-      } else {
+      if(this.parent && !this.parent.multiple) {
         this.parent.isSelect = false;
         this.parent.clearSelections();
-        this.selected = true;
+        this.selected = !this.selected;
+      }
+      if(this.parent && this.parent.multiple) {
+        this.selected = !this.selected;
       }
     },
   },
@@ -66,6 +67,7 @@ $hoverColor: #ECF5FD;
   color: $fontColor;
   white-space: nowrap;
   user-select: none;
+  background: #fff;
 
   &.selected {
     font-weight: bold;
