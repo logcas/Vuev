@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import utils from '../../utils/utils.js';
+
 export default {
   name: 'l-select-option',
   props: {
@@ -24,17 +26,6 @@ export default {
     }
   },
   methods: {
-    findParent() {
-      let p = this.$parent;
-      while(p) {
-        if(p.$options.name === 'l-select') {
-          this.parent = p;
-          p = null;
-        } else {
-          p = p.$parent;
-        }
-      }
-    },
     setValue() {
       if(this.disabled) return;
       this.parent && this.parent.setValue(this.currentLabel, this.currentValue);
@@ -48,7 +39,7 @@ export default {
     },
   },
   mounted() {
-    this.findParent();
+    this.parent = utils.findParentComponent(this, 'l-select');
     if(this.label) this.currentLabel = this.label;
     if(!this.label) this.currentLabel = this.$slots.default[0].text || '';
     if(this.value) this.currentValue = this.value;

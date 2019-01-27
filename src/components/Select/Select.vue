@@ -27,6 +27,7 @@
 <script>
 import clickOutSide from "../../directives/clickoutside";
 import SelectTag from "./SelectTag.vue";
+import utils from '../../utils/utils.js';
 
 export default {
   name: "l-select",
@@ -77,19 +78,8 @@ export default {
         this.$emit("input", this.selections.map(select => select.value));
       }
     },
-    searchChild(node, arr) {
-      let child = node.$children;
-      if (child) {
-        child.forEach(el => {
-          if (el.$options.name === "l-select-option") {
-            arr.push(el);
-          }
-          this.searchChild(el, arr);
-        });
-      }
-    },
     initChidren() {
-      this.searchChild(this, this.childrens);
+      this.childrens = utils.findChildrenComponent(this, 'l-select-option');
       if (this.value) {
         this.childrens.forEach(child => {
           if (this.value === child.currentValue || this.value.includes(child.currentValue)) {

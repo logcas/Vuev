@@ -5,8 +5,9 @@
 </template>
 
 <script>
+import utils from "../../utils/utils.js";
 export default {
-  name: 'l-radio-group',
+  name: "l-radio-group",
   props: {
     value: [String, Number]
   },
@@ -18,23 +19,22 @@ export default {
   methods: {
     updateValue(newVal) {
       this.childrens.forEach(child => {
-        if(child.currentValue === newVal) {
+        if (child.currentValue === newVal) {
           child.setStatus(true);
         } else {
           child.setStatus(false);
         }
       });
-      this.$emit('input', newVal);
+      this.$emit("input", newVal);
     },
     findChildren() {
-      if (this.$children) {
-        this.$children.forEach(child => {
-          if (child.$options.name === "l-radio" || child.$options.name === 'l-radio-button') {
-            this.childrens.push(child);
-          }
-        });
-        this.updateValue(this.value);
-      }
+      this.childrens = utils.findChildrenComponent(
+        this,
+        "l-radio",
+        "l-radio-button"
+      );
+      console.log(this.childrens);
+      this.updateValue(this.value);
     }
   },
   mounted() {

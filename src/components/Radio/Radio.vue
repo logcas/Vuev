@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import utils from '../../utils/utils.js';
 export default {
   name: 'l-radio',
   props: {
@@ -50,10 +51,8 @@ export default {
       }
     },
     findParent() {
-      if (this.$parent && this.$parent.$options.name === "l-radio-group") {
-        this.parent = this.$parent;
-        this.isGroup = true;
-      }
+      this.parent = utils.findParentComponent(this, 'l-radio-group');
+      if(this.parent) this.isGroup = true;
     },
     setStatus(isChecked) {
       this.$refs.radio.checked = isChecked;

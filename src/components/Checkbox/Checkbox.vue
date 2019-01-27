@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import utils from '../../utils/utils.js';
+
 export default {
   name: "l-checkbox",
   props: {
@@ -46,15 +48,12 @@ export default {
       !this.isGroup && this.$emit("on-change", this.label);
       this.parent && this.parent.updateValues();
     },
-    findParent() {
-      if (this.$parent && this.$parent.$options.name === "l-checkbox-group") {
-        this.parent = this.$parent;
-        this.isGroup = true;
-      }
-    }
   },
   mounted() {
-    this.findParent();
+    this.parent = utils.findParentComponent(this, 'l-checkbox-group');
+    if (this.parent) {
+      this.isGroup = true;
+    }
     if (this.checked) {
       this.currentValue = this.checked;
       this.$emit("input", this.currentValue);

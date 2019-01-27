@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import utils from '../../utils/utils.js';
+
 export default {
   name:'l-checkbox-group',
   data() {
@@ -25,18 +27,9 @@ export default {
       this.$emit('input', this.values);
       if(!this.firstLoad) this.$emit('on-change', this.values);
     },
-    findChildren() {
-      if(this.$children) {
-        this.$children.forEach(child => {
-          if(child.$options.name === 'l-checkbox') {
-            this.childrens.push(child);
-          }
-        });
-      }
-    }
   },
   mounted() {
-    this.findChildren();
+    this.childrens = utils.findChildrenComponent(this, 'l-checkbox');
     this.updateValues();
     this.firstLoad = false;
   },
