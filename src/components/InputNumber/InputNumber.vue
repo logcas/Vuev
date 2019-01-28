@@ -1,103 +1,186 @@
 <template>
-  <label class="l-input primary normal">
-    <l-icon class="btn increase" icon-name="top" color="#3f536e" size="30" @click.native="increase"></l-icon>
-    <l-icon class="btn decrease" icon-name="down" color="#3f536e" size="30" @click.native="decrease"></l-icon>
-    <input type="text" v-model="currentValue">
-  </label>
+  <div :class="['l-input',{
+    normal: size === 'normal',
+    small: size === 'small',
+    large: size === 'large',
+    }]">
+    <span class="btn btn-increase" @click="increase"></span>
+    <span class="btn btn-decrease" @click="decrease"></span>
+    <input
+      type="text"
+      :value="currentValue"
+      @input="$emit('input', $event.target.value)"
+      :autofocus="autofocus"
+      :disabled="disabled"
+      :readonly="readonly"
+    >
+  </div>
 </template>
 
 <script>
-import Icon from '../Icon/Icon.vue';
 export default {
-  props:{
+  name: "l-input-number",
+  props: {
     value: Number,
     size: {
       type: String,
-      default: 'normal',
+      default: "normal",
       validator(val) {
-        return ['normal','small','large'].includes(val);
-      },
+        return ["normal", "small", "large"].includes(val);
+      }
     },
     step: {
       type: Number,
-      default: 1,
+      default: 1
     },
     min: {
       type: Number,
-      default: -Infinity,
+      default: -Infinity
     },
     max: {
       type: Number,
-      default: Infinity,
+      default: Infinity
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     autofocus: {
       type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      currentValue: 0,
+      default: false
     }
   },
-  components: {
-    'l-icon': Icon,
+  computed: {
+    currentValue() {
+      if (typeof this.value !== "number") return 0;
+      let val = Math.max(this.min, this.value);
+      val = Math.min(this.max, val);
+      return val;
+    },
+    decimalDigits() {
+      let str = this.step.toString(),
+        idx = str.indexOf(".");
+      if (idx === -1) return 0;
+      else return str.slice(idx + 1).length;
+    }
   },
   methods: {
     increase() {
-      console.log('increase');
-      let currentValue = Number(this.value);
-      this.currentValue = currentValue + this.step;
+      if (this.disabled || this.readonly) return;
+      let val = parseFloat((this.value + this.step).toFixed(this.decimalDigits));
+      this.emitValue(val);
     },
     decrease() {
-      console.log('decrease');
-      let currentValue = Number(this.value);
-      this.currentValue = currentValue - this.step;
+      if (this.disabled || this.readonly) return;
+      let val = parseFloat((this.value - this.step).toFixed(this.decimalDigits));
+      this.emitValue(val);
+    },
+    emitValue(val) {
+      val = Math.max(this.min, val);
+      val = Math.min(this.max, val);
+      this.$emit('input', val);
     },
   },
-  mounted() {
-    this.currentValue = this.value;
-  }
-}
+  mounted() {}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/style/input.scss";
+
+$primary: #6190e8;
+
 .l-input {
+  box-sizing: border-box;
   position: relative;
 
   input[type="text"] {
-    padding-left: 20px;
+    width: 100%;
+    padding-right: 25px;
+  }
+
+  &:hover .btn {
+    opacity: 1;
+  }
+
+  &.large .btn {
+    height: 17px;
+  }
+
+  &.small .btn {
+    height: 12px;
   }
 
   .btn {
-    opacity: 0.3;
     position: absolute;
     z-index: 99;
-    left: -5px;
+    height: 14px;
+    width: 20px;
+    border-left: 1px solid #eee;
+    background: #fff;
     cursor: pointer;
-    transition: opacity 0.5s ease-in;
+    user-select: none;
+    transition: all 0.2s linear;
+    opacity: 0;
 
-    &.increase {
-      top: 0px;
+    &:hover {
+      background: #eee;
     }
 
-    &.decrease {
-      top: 10px;
-    }
-  }
+    &.btn-increase {
+      top: 1px;
+      right: 1px;
+      border-top-right-radius: 5px;
+      border-bottom: 1px solid #eee;
 
-  &:hover {
-    .btn {
-      opacity: 1;
+      &:hover::before {
+        border-color: $primary;
+      }
+
+      &::before {
+        position: absolute;
+        display: block;
+        top: 6px;
+        left: 6px;
+        height: 6px;
+        width: 6px;
+        border: 1px solid #c5d9e8;
+        border-right-width: 0;
+        border-bottom-width: 0;
+        z-index: 999;
+        content: " ";
+        transform: rotate(45deg);
+      }
+    }
+
+    &.btn-decrease {
+      bottom: 1px;
+      right: 1px;
+      border-bottom-right-radius: 5px;
+      border-top: 1px solid #eee;
+
+      &:hover::before {
+        border-color: $primary;
+      }
+
+      &::before {
+        position: absolute;
+        display: block;
+        bottom: 6px;
+        left: 6px;
+        height: 6px;
+        width: 6px;
+        border: 1px solid #c5d9e8;
+        border-top-width: 0;
+        border-left-width: 0;
+        z-index: 999;
+        content: " ";
+        transform: rotate(45deg);
+      }
     }
   }
 }

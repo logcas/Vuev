@@ -108,11 +108,6 @@ export default {
       }
       if (idx !== -1) {
         let [{ value: selectVal }] = this.selections.splice(idx, 1);
-        //this.childrens.forEach(child => {
-        //  if (child.currentValue === selectVal) {
-        //    child.selected = false;
-        //  }
-        //});
         return true;
       }
       return false;
