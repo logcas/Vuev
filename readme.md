@@ -17,7 +17,7 @@ VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正�
   - [x] Textarea 多行文本输入框
   - [x] InputNumber 数字输入框
 - [ ] 视图
-  - [ ] Alert 警告提示框
+  - [x] Alert 警告提示框
   - [ ] Badge 微标
   - [ ] Card 卡片
   - [ ] Collapse 折叠面板

@@ -2,6 +2,10 @@
   <div id="app">
     <l-input-number v-model="val" :step="0.1" :min="10" :max="12" style="width:200px"></l-input-number>
     {{val}}
+    <l-alert title="this is title" show-icon>hello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,world</l-alert>
+    <l-alert title="this is title" show-icon status="warning">hello,world</l-alert>
+    <l-alert title="this is title" show-icon status="error" closable>hello,world</l-alert>
+    <l-alert show-icon status="success">hello,world</l-alert>
   </div>
 </template>
 
@@ -24,6 +28,7 @@ import SelectTag from './components/Select/SelectTag.vue';
 import Slider from './components/Slider/Slider.vue';
 import Textarea from './components/Textarea/Textarea.vue';
 import InputNumber from './components/InputNumber/InputNumber.vue';
+import Alert from './components/Alert/Alert.vue';
 
 export default {
   name: "app",
@@ -51,6 +56,7 @@ export default {
     'l-slider': Slider,
     'l-textarea': Textarea,
     'l-input-number': InputNumber,
+    'l-alert': Alert,
   },
   methods: {
     btnClick() {

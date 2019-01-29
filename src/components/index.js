@@ -16,6 +16,8 @@ import SelectGroup from './Select-Group';
 import SelectOption from './Select-Option';
 import Slider from './Slider';
 import Textarea from './Textarea';
+import InputNumber from './InputNumber';
+import Alert from './Alert';
 
 const components = {
   Button,
@@ -34,6 +36,8 @@ const components = {
   SelectOption,
   Slider,
   Textarea,
+  InputNumber,
+  Alert,
 };
 
 const install = function install(Vue) {
@@ -63,4 +67,6 @@ export default {
   SelectOption,
   Slider,
   Textarea,
+  InputNumber,
+  Alert,
 };
