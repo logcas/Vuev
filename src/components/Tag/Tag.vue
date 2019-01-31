@@ -42,7 +42,7 @@ $border: #c5d9e8;
 $fontColor: #3f536e;
 
 .tag {
-  margin: 2px;
+  margin: 0px;
   padding: 2px 10px;
   border-radius: 3px;
   font-size: 14px;

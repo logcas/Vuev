@@ -1,11 +1,9 @@
 <template>
   <label
-    :class="['l-switch', {
+    :class="['l-switch', size, {
     unchecked: !currentValue,
     checked: currentValue,
     disabled: disabled, 
-    normal: size === 'normal',
-    large: size === 'large',
     }]"
     @click="changeStatus"
   >

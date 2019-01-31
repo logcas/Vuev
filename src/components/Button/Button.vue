@@ -100,7 +100,7 @@ $btnGroupTextColor: #8dabc4;
 }
 
 .btn {
-  margin: 2px;
+  margin: 0px;
   font-size: 14px;
   font-family: "Microsoft YaHei";
   border-radius: 3px;
