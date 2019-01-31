@@ -2,10 +2,24 @@
   <div id="app">
     <l-input-number v-model="val" :step="0.1" :min="10" :max="12" style="width:200px"></l-input-number>
     {{val}}
-    <l-alert title="this is title" show-icon>hello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,world</l-alert>
+    <l-alert
+      title="this is title"
+      show-icon
+    >hello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,world</l-alert>
     <l-alert title="this is title" show-icon status="warning">hello,world</l-alert>
     <l-alert title="this is title" show-icon status="error" closable>hello,world</l-alert>
     <l-alert show-icon status="success">hello,world</l-alert>
+    <div>
+      <l-badge :value="666" status="primary" :max-num="20">
+        <l-tag>hello</l-tag>
+      </l-badge>
+      <l-badge :value="3" status="primary">
+        <l-button>一个按钮</l-button>
+      </l-badge>
+      <l-badge :value="3" status="primary" dot>
+        <l-button>一个按钮</l-button>
+      </l-badge>
+    </div>
   </div>
 </template>
 
@@ -24,17 +38,18 @@ import Switch from "./components/Switch/Switch.vue";
 import Select from "./components/Select/Select.vue";
 import SelectOption from "./components/Select/SelectOption.vue";
 import SelectGroup from "./components/Select/SelectGroup.vue";
-import SelectTag from './components/Select/SelectTag.vue';
-import Slider from './components/Slider/Slider.vue';
-import Textarea from './components/Textarea/Textarea.vue';
-import InputNumber from './components/InputNumber/InputNumber.vue';
-import Alert from './components/Alert/Alert.vue';
+import SelectTag from "./components/Select/SelectTag.vue";
+import Slider from "./components/Slider/Slider.vue";
+import Textarea from "./components/Textarea/Textarea.vue";
+import InputNumber from "./components/InputNumber/InputNumber.vue";
+import Alert from "./components/Alert/Alert.vue";
+import Badge from "./components/Badge/Badge.vue";
 
 export default {
   name: "app",
   data() {
     return {
-      val: 0,
+      val: 0
     };
   },
   components: {
@@ -53,10 +68,11 @@ export default {
     "l-select-option": SelectOption,
     "l-select-group": SelectGroup,
     "l-select-tag": SelectTag,
-    'l-slider': Slider,
-    'l-textarea': Textarea,
-    'l-input-number': InputNumber,
-    'l-alert': Alert,
+    "l-slider": Slider,
+    "l-textarea": Textarea,
+    "l-input-number": InputNumber,
+    "l-alert": Alert,
+    "l-badge": Badge
   },
   methods: {
     btnClick() {
