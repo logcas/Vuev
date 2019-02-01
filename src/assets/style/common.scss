@@ -1,0 +1,11 @@
+$primary: #78A4FA;
+
+div,p,h1,h2,h3,h4,h5,h6,ul,li,ol,table,td,th {
+  margin: 0;
+  padding: 0;
+}
+
+a,a:hover,a:active,a:link {
+  text-decoration: none;
+  color: $primary;
+}

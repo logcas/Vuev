@@ -20,6 +20,11 @@
         <l-button>一个按钮</l-button>
       </l-badge>
     </div>
+    <l-card style="width:300px;" :loading="true">
+      <h4 slot="title">Card Title</h4>
+      <div slot="extra"><a href="">Extra</a></div>
+      <div slot="body">Card ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard Content</div>
+    </l-card>
   </div>
 </template>
 
@@ -44,6 +49,7 @@ import Textarea from "./components/Textarea/Textarea.vue";
 import InputNumber from "./components/InputNumber/InputNumber.vue";
 import Alert from "./components/Alert/Alert.vue";
 import Badge from "./components/Badge/Badge.vue";
+import Card from './components/Card/Card.vue';
 
 export default {
   name: "app",
@@ -72,7 +78,8 @@ export default {
     "l-textarea": Textarea,
     "l-input-number": InputNumber,
     "l-alert": Alert,
-    "l-badge": Badge
+    "l-badge": Badge,
+    "l-card": Card,
   },
   methods: {
     btnClick() {

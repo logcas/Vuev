@@ -18,6 +18,8 @@ import Slider from './Slider';
 import Textarea from './Textarea';
 import InputNumber from './InputNumber';
 import Alert from './Alert';
+import Badge from './Badge';
+import Card from './Card';
 
 const components = {
   Button,
@@ -38,6 +40,8 @@ const components = {
   Textarea,
   InputNumber,
   Alert,
+  Badge,
+  Card,
 };
 
 const install = function install(Vue) {
