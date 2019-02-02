@@ -1,25 +1,10 @@
 <template>
   <div id="app">
-    <l-input-number v-model="val" :step="0.1" :min="10" :max="12" style="width:200px"></l-input-number>
-    {{val}}
-    <l-alert
-      title="this is title"
-      show-icon
-    >hello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,worldhello,world</l-alert>
-    <l-alert title="this is title" show-icon status="warning">hello,world</l-alert>
-    <l-alert title="this is title" show-icon status="error" closable>hello,world</l-alert>
-    <l-alert show-icon status="success">hello,world</l-alert>
-    <div>
-      <l-badge :value="666" status="primary" :max-num="20">
-        <l-tag>hello</l-tag>
-      </l-badge>
-      <l-badge :value="3" status="primary">
-        <l-button>一个按钮</l-button>
-      </l-badge>
-      <l-badge :value="3" status="primary" dot>
-        <l-button>一个按钮</l-button>
-      </l-badge>
-    </div>
+    <l-button @click="start">start</l-button>
+    <l-button @click="finish">finish</l-button>
+    <l-button @click="update">update</l-button>
+    <l-button @click="error">error</l-button>
+    <l-button @click="setWidth">设置宽度为4px</l-button>
     <l-card style="width:300px;" :loading="true">
       <h4 slot="title">Card Title</h4>
       <div slot="extra"><a href="">Extra</a></div>
@@ -50,12 +35,14 @@ import InputNumber from "./components/InputNumber/InputNumber.vue";
 import Alert from "./components/Alert/Alert.vue";
 import Badge from "./components/Badge/Badge.vue";
 import Card from './components/Card/Card.vue';
+import LoadingBar from './components/LoadingBar/LoadingBar.vue';
 
 export default {
   name: "app",
   data() {
     return {
-      val: 0
+      val: 0,
+      percent: 20,
     };
   },
   components: {
@@ -82,18 +69,23 @@ export default {
     "l-card": Card,
   },
   methods: {
-    btnClick() {
-      //alert('hello,world');
+    start() {
+      this.$loadingBar.start();
     },
-    closeCallback(e) {
-      console.log(e);
+    finish() {
+      this.$loadingBar.finish();
     },
-    onchange(data) {
-      console.log(data);
+    error() {
+      this.$loadingBar.error();
     },
-    show(newVal, oldVal) {
-      alert(`新的评分为：${newVal}，旧的评分为：${oldVal}`);
-    }
+    update() {
+      this.$loadingBar.update(50);
+    },
+    setWidth() {
+      this.$loadingBar.config({
+        width: 4,
+      });
+    },
   }
 };
 </script>

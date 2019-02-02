@@ -20,6 +20,7 @@ import InputNumber from './InputNumber';
 import Alert from './Alert';
 import Badge from './Badge';
 import Card from './Card';
+import LoadingBar from './LoadingBar';
 
 const components = {
   Button,
@@ -46,6 +47,8 @@ const components = {
 
 const install = function install(Vue) {
   Object.keys(components).forEach(key => Vue.component(components[key].name, components[key]));
+  const proto = Vue.prototype;
+  proto.$loadingBar = LoadingBar;
 };
 
 // for cdn

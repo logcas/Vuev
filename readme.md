@@ -16,12 +16,12 @@ VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正�
   - [x] Switch 开关
   - [x] Textarea 多行文本输入框
   - [x] InputNumber 数字输入框
-- [ ] 视图
+- [ ] View 视图
   - [x] Alert 警告提示框
   - [x] Badge 微标
   - [x] Card 卡片
   - [ ] Collapse 折叠面板
-  - [ ] LoadingBar 加载进度条
+  - [x] LoadingBar 加载进度条
   - [ ] Modal 模态框
   - [ ] Message 全局提示
   - [ ] Notification 通知提醒
@@ -30,7 +30,7 @@ VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正�
   - [ ] Timeline 时间轴
   - [ ] Tooptip 文字提示
   - [ ] Table 表格
-- [ ] 导航
+- [ ] Navigation 导航
   - [ ] Breadcrumb 面包屑
   - [ ] Dropdown 下拉菜单
   - [ ] Menu 导航菜单
