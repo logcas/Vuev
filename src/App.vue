@@ -10,6 +10,20 @@
       <div slot="extra"><a href="">Extra</a></div>
       <div slot="body">Card ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard ContentCard Content</div>
     </l-card>
+    <l-collapse @on-change="collapse" :value="'222'">
+      <l-collapse-item name="111">
+        <div slot="title">Title</div>
+        <div slot="content">Hello,world</div>
+      </l-collapse-item>
+      <l-collapse-item name="222">
+        <div slot="title">Title</div>
+        <div slot="content">Hello,world</div>
+      </l-collapse-item>
+      <l-collapse-item name="333">
+        <div slot="title">Title</div>
+        <div slot="content">Hello,world</div>
+      </l-collapse-item>
+    </l-collapse>
   </div>
 </template>
 
@@ -36,6 +50,8 @@ import Alert from "./components/Alert/Alert.vue";
 import Badge from "./components/Badge/Badge.vue";
 import Card from './components/Card/Card.vue';
 import LoadingBar from './components/LoadingBar/LoadingBar.vue';
+import Collapse from './components/Collapse/Collapse.vue';
+import CollapseItem from './components/Collapse/CollapseItem.vue';
 
 export default {
   name: "app",
@@ -67,8 +83,13 @@ export default {
     "l-alert": Alert,
     "l-badge": Badge,
     "l-card": Card,
+    "l-collapse": Collapse,
+    "l-collapse-item": CollapseItem,
   },
   methods: {
+    collapse(items) {
+      console.log(items);
+    },
     start() {
       this.$loadingBar.start();
     },

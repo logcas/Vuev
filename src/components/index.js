@@ -21,6 +21,8 @@ import Alert from './Alert';
 import Badge from './Badge';
 import Card from './Card';
 import LoadingBar from './LoadingBar';
+import Collapse from './Collapse';
+import CollapseItem from './Collapse-Item';
 
 const components = {
   Button,
@@ -43,6 +45,9 @@ const components = {
   Alert,
   Badge,
   Card,
+  Collapse,
+  CollapseItem,
+  LoadingBar,
 };
 
 const install = function install(Vue) {

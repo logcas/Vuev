@@ -1,0 +1,66 @@
+@import './common.scss';
+
+$primary: #6190e8;
+$border: #dfdfdf;
+$shadow: #EEF0F0;
+$header: #f7f7f7;
+
+$fontSize: 14px;
+$titleColor: #2C405A;
+$textColor: #3F536E;
+$disabledTitle: rgba(44,64,90,0.2);
+
+.l-collapse {
+  box-sizing: border-box;
+  border: 1px solid $border;
+  border-radius: 5px;
+
+  &.simple {
+    border-width: 0;
+    border-radius: 0;
+
+    .l-collapse-item {
+      .header {
+        background: transparent;
+        border-top-width: 0;
+        border-bottom: 1px solid $border;
+      }
+    }
+  }
+
+  .l-collapse-item {
+
+    &:first-child > .header {
+      border-top-width: 0;
+    }
+
+    .header {
+      padding: 5px 10px;
+      font-size: $fontSize;
+      color: $titleColor;
+      background: $header;
+      cursor: pointer;
+      border-top: 1px solid $border;
+    }
+    .body {
+      padding: 10px;
+      transition: all 0.5s linear;
+    }
+
+    &.collapsed {
+      .body {
+        padding: 0 10px;
+        height: 0;
+        overflow: hidden;
+      }
+    }
+
+    &.disabled {
+      .header {
+        color: $disabledTitle;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
