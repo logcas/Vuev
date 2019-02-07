@@ -23,6 +23,8 @@ import Card from './Card';
 import LoadingBar from './LoadingBar';
 import Collapse from './Collapse';
 import CollapseItem from './Collapse-Item';
+import Modal from './Modal';
+import ModalDialog from './Modal/Modal';
 
 const components = {
   Button,
@@ -48,12 +50,14 @@ const components = {
   Collapse,
   CollapseItem,
   LoadingBar,
+  Modal,
 };
 
 const install = function install(Vue) {
   Object.keys(components).forEach(key => Vue.component(components[key].name, components[key]));
   const proto = Vue.prototype;
   proto.$loadingBar = LoadingBar;
+  proto.$modal = ModalDialog;
 };
 
 // for cdn
@@ -81,4 +85,10 @@ export default {
   Textarea,
   InputNumber,
   Alert,
+  Badge,
+  Card,
+  Collapse,
+  CollapseItem,
+  LoadingBar,
+  Modal,
 };

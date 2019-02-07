@@ -22,7 +22,7 @@ VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正�
   - [x] Card 卡片
   - [x] Collapse 折叠面板
   - [x] LoadingBar 加载进度条
-  - [ ] Modal 模态框
+  - [x] Modal 模态框
   - [ ] Message 全局提示
   - [ ] Notification 通知提醒
   - [ ] Popover 弹出框

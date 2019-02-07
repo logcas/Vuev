@@ -24,6 +24,9 @@
         <div slot="content">Hello,world</div>
       </l-collapse-item>
     </l-collapse>
+    <l-button @click="alert">alert</l-button>
+    <l-button @click="confirm">confirm</l-button>
+    <l-button @click="prompt">prompt</l-button>
   </div>
 </template>
 
@@ -52,6 +55,7 @@ import Card from './components/Card/Card.vue';
 import LoadingBar from './components/LoadingBar/LoadingBar.vue';
 import Collapse from './components/Collapse/Collapse.vue';
 import CollapseItem from './components/Collapse/CollapseItem.vue';
+import Modal from './components/Modal/Modal.vue';
 
 export default {
   name: "app",
@@ -59,6 +63,7 @@ export default {
     return {
       val: 0,
       percent: 20,
+      showModal: true,
     };
   },
   components: {
@@ -85,10 +90,44 @@ export default {
     "l-card": Card,
     "l-collapse": Collapse,
     "l-collapse-item": CollapseItem,
+    'l-modal': Modal,
   },
   methods: {
     collapse(items) {
       console.log(items);
+    },
+    beforeClose(e, done) {
+      console.log('beforeclose');
+      done(true);
+    },
+    alert() {
+      this.$Modal.alert({
+        title: '提示',
+        content: '这是一条提示',
+        callback: function() {
+          console.log('cb');
+        },
+      });
+    },
+    confirm() {
+      this.$Modal.confirm({
+        title: 'Confirm 模态框',
+        content: '这个操作很危险，你真的要做吗？',
+      }).then(() => {
+        console.log('confirm');
+      }).catch(() => {
+        console.log('confirm cancel');
+      });
+    },
+    prompt() {
+      this.$Modal.prompt({
+        title: 'prompt 模态框',
+        content: '随便输入',
+      }).then((val) => {
+        console.log(val);
+      }).catch(() => {
+        console.log('prompt cancel');
+      });
     },
     start() {
       this.$loadingBar.start();
