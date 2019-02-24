@@ -126,8 +126,7 @@ $largeHeight: 36px;
       opacity: $focusOpacity;
     }
 
-    &:disabled,
-    &:read-only {
+    &:disabled {
       border-color: $border;
       background-color: $disbled;
       opacity: $blurOpacity;

@@ -27,6 +27,7 @@
     <l-button @click="alert">alert</l-button>
     <l-button @click="confirm">confirm</l-button>
     <l-button @click="prompt">prompt</l-button>
+    <l-date-picker></l-date-picker>
   </div>
 </template>
 
@@ -56,6 +57,7 @@ import LoadingBar from './components/LoadingBar/LoadingBar.vue';
 import Collapse from './components/Collapse/Collapse.vue';
 import CollapseItem from './components/Collapse/CollapseItem.vue';
 import Modal from './components/Modal/Modal.vue';
+import DatePicker from './components/Date-Picker/DatePicker.vue';
 
 export default {
   name: "app",
@@ -91,6 +93,7 @@ export default {
     "l-collapse": Collapse,
     "l-collapse-item": CollapseItem,
     'l-modal': Modal,
+    'l-date-picker': DatePicker,
   },
   methods: {
     collapse(items) {

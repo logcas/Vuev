@@ -25,6 +25,7 @@ import Collapse from './Collapse';
 import CollapseItem from './Collapse-Item';
 import Modal from './Modal';
 import ModalDialog from './Modal/Modal';
+import DatePicker from './Date-Picker';
 
 const components = {
   Button,
@@ -51,6 +52,7 @@ const components = {
   CollapseItem,
   LoadingBar,
   Modal,
+  DatePicker,
 };
 
 const install = function install(Vue) {
@@ -91,4 +93,5 @@ export default {
   CollapseItem,
   LoadingBar,
   Modal,
+  DatePicker,
 };

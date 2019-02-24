@@ -16,6 +16,7 @@ VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正�
   - [x] Switch 开关
   - [x] Textarea 多行文本输入框
   - [x] InputNumber 数字输入框
+  - [x] DatePicker 日期选择器
 - [ ] View 视图
   - [x] Alert 警告提示框
   - [x] Badge 微标
