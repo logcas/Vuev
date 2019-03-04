@@ -1,8 +1,8 @@
 <template>
-  <div class="l-date-picker" v-clickoutside="hidePicker">
+  <div class="l-date-picker" v-clickoutside="hidePicker" ref="selector">
     <l-input @focus="isShowPicker = true" ref="dateInput" readonly :value="inputValue"></l-input>
     <transition name="fade">
-      <div :class="['l-date-selector']" v-show="isShowPicker">
+      <div :class="['l-date-selector', {'show-on-bottom': showOnBottom }]" v-show="isShowPicker">
         <div class="header">
           <div class="before-btn" @click="getLastMonth">&lt;</div>
           <div class="after-btn" @click="getNextMonth">&gt;</div>
@@ -61,9 +61,14 @@ export default {
   directives: { clickoutside: clickOutSide },
   props: {
     value: String,
+    hideAfterPick: {
+      type: Boolean,
+      default: true,
+    }
   },
   data() {
     return {
+      showOnBottom: false, // 是否从下方显示picker
       isShowPicker: false, // 控制显隐
       weeks: ["日", "一", "二", "三", "四", "五", "六"],
 
@@ -84,7 +89,7 @@ export default {
   computed: {
     Month() {
       return MONTHS[this.currentMonth];
-    }
+    },
   },
   methods: {
     pickDate(e) {
@@ -93,6 +98,7 @@ export default {
       let datePicked = new Date(year, month, date);
       this.$emit('input', datePicked);
       this.inputValue = `${year} - ${+month+1} - ${date}`;
+      if(this.hideAfterPick) this.isShowPicker = false;
     },
     hidePicker(e) {
       this.isShowPicker = false;
@@ -217,6 +223,10 @@ export default {
     }
     this.getBasicData();
     this.getDateList();
+  },
+  mounted() {
+    // 输入上方空间不足，则从输入框下方显示，但默认为上方。
+    this.showOnBottom = this.$refs.selector.getBoundingClientRect().top >= 300 ? false : true;
   }
 };
 </script>
@@ -256,6 +266,11 @@ $textColor: #3f536e;
     border: 1px solid $border;
     border-radius: 5px;
     transition: all 0.2s linear;
+    z-index: 99;
+
+    &.show-on-bottom {
+      top: 40px;
+    }
 
     font-size: 14px;
 

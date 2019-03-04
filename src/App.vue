@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <l-date-picker></l-date-picker>
     <l-button @click="start">start</l-button>
     <l-button @click="finish">finish</l-button>
     <l-button @click="update">update</l-button>
@@ -27,7 +28,7 @@
     <l-button @click="alert">alert</l-button>
     <l-button @click="confirm">confirm</l-button>
     <l-button @click="prompt">prompt</l-button>
-    <l-date-picker></l-date-picker>
+        <l-date-picker></l-date-picker>
   </div>
 </template>
 
