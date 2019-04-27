@@ -1,5 +1,5 @@
 # VueV
-VueV是一个基于Vue2.x的简洁（XJB设计规范）UI组件库，目前正在建设中。
+Vue.js 2.x 组件库
 
 ## Progress
 - [x] Basic 基础
